@@ -1,14 +1,68 @@
 import streamlit as st
+import pandas as pd
 
-st.set_page_config(page_title="search", page_icon="📚")
+# --- 設定 ---
+# ご自身のスプレッドシートのURLをここに貼り付けてください
+SHEET_URL = "https://docs.google.com/spreadsheets/d/1q5ACTKmnTL_2xkETX7rXajX7AG3d6I3n-DSj4QSx56Q/export?format=csv"
+
+
+@st.cache_data(ttl=600)  # 10分間キャッシュを保持（頻繁な通信を避ける）
+def load_data_from_gsheets(url):
+    try:
+        # スプレッドシートをCSVとして読み込む
+        return pd.read_csv(url)
+    except Exception as e:
+        st.error(f"データの読み込みに失敗しました: {e}")
+        return None
+
+
+# データの読み込み
+df = load_data_from_gsheets(SHEET_URL)
 
 st.title("🔍 リンカ検索")
-st.write("日々の献立管理における、リン(P)とカリウム(K)の計算をサポートします。")
+st.write("食品名を検索するとリンとカリウムの含有量を表示します。")
 
-st.info("""
-### 💡 このアプリでできること
-- **食材別の成分確認**: 文部科学省のデータベースに基づいた正確な計算。
-- **摂取量の見える化**: 制限値を超えないためのスマートなチェック。
-""")
+if df is not None:
+    # 検索機能：食品表示名のリストを作成
+    food_options = df["食品表示名"].dropna().unique().tolist()
 
-st.write("Developed by Kohei Takahashi")
+    # ユーザーが食材を選択
+    selected_name = st.selectbox(
+        "食品名を入力または選択してください",
+        food_options,
+        index=None,
+        placeholder="食材名を探す..."
+    )
+
+    if selected_name:
+        # 選択された食材の行を抽出
+        item = df[df["食品表示名"] == selected_name].iloc[0]
+
+        st.divider()
+
+        # 重量の入力
+        weight = st.number_input("食べる量 (g)", min_value=1, value=100, step=10)
+
+        # 計算（100gあたりの数値を換算）
+        # ※スプレッドシートのカラム名が「カリウム：K」である前提です
+        k_val = item["カリウム：K"] * weight / 100
+        p_val = item["リン：P"] * weight / 100
+        s_val = item["塩分"] * weight / 100
+
+        # 結果表示
+        st.subheader(f"📊 {selected_name} ({weight}g) の推定値")
+
+        col1, col2, col3 = st.columns(3)
+        col1.metric("カリウム", f"{k_val:.0f} mg")
+        col2.metric("リン", f"{p_val:.0f} mg")
+        col3.metric("塩分", f"{s_val:.1f} g")
+
+        # 備考や詳細情報
+        with st.expander("詳細データ・備考"):
+            st.write(f"**データソース:** {item['データソース']}")
+            if pd.notna(item["備　　考"]):
+                st.info(f"💡 備考: {item['備　　考']}")
+    else:
+        st.info("上の検索窓から食材を選んでください。")
+
+st.caption("Developed by Kohei Takahashi")
