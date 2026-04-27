@@ -1,14 +1,24 @@
 import streamlit as st
 
-st.set_page_config(page_title="PK-Checker", page_icon="📚")
+st.set_page_config(page_title="PK-Checker", page_icon="🥗")
 
-st.title("リンカチェッカー")
-st.write("日々の献立管理における、リン(P)とカリウム(K)の計算をサポートします。")
+# 1. ページの定義
+# ホーム画面用の中身は pages/home.py に移動させます
+home_page = st.Page(
+    "pages/home.py",
+    title="ホーム",
+    icon="🏠",
+    default=True
+)
 
-st.info("""
-### 💡 このアプリでできること
-- **食材別の成分確認**: 文部科学省のデータベースに基づいた正確な計算。
-- **摂取量の見える化**: 制限値を超えないためのスマートなチェック。
-""")
+search_page = st.Page(
+    "pages/search.py",
+    title="リンカ検索",
+    icon="🔍"
+)
 
-st.write("Developed by Kohei Takahashi")
+# 2. ナビゲーションの設定
+pg = st.navigation([home_page, search_page])
+
+# 4. 実行
+pg.run()
