@@ -30,6 +30,6 @@
 
 ## 🗂 データベース (Database)
 本プロジェクトでは、データの更新性と保守性を高めるため、Googleスプレッドシートをデータベースとして活用しています。
-- [食品成分データベース（閲覧用）](https://docs.google.com/spreadsheets/d/1q5ACTKmnTL_2xkETX7rXajX7AG3d6I3n-DSj4QSx56Q/edit?gid=0#gid=0)
+[![Database](https://img.shields.io/badge/Food_Database-34A853?style=for-the-badge&logo=google-sheets&logoColor=white)](https://docs.google.com/spreadsheets/d/1q5ACTKmnTL_2xkETX7rXajX7AG3d6I3n-DSj4QSx56Q/edit?gid=0#gid=0)
   - 収録数：約47品目（順次拡充中）
   - 特徴：調理状態（ゆで・乾）による分類、使用頻度フラグ（高・中・低）の付与
