@@ -102,9 +102,9 @@ if df is not None:
         col1, col2, col3 = st.columns(3)
 
         # 各項目の判定（例: カリウムは2000以上なら赤、リンは50以下なら青/200以上なら赤）
-        k_color = get_status_color(k_val, low_threshold=50, high_threshold=200)
+        k_color = get_status_color(k_val, low_threshold=100, high_threshold=300)
         p_color = get_status_color(p_val, low_threshold=50, high_threshold=200)
-        s_color = get_status_color(s_val, low_threshold=50, high_threshold=200)
+        s_color = get_status_color(s_val, low_threshold=0.1, high_threshold=2)
 
         with col1:
             display_custom_metric("カリウム", f"{k_val:.0f}", "mg", k_color)
