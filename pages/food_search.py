@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # --- 設定 ---
-# ご自身のスプレッドシートのURLをここに貼り付けてください
+# スプレッドシートのURL
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1q5ACTKmnTL_2xkETX7rXajX7AG3d6I3n-DSj4QSx56Q/export?format=csv"
 
 # --- 関数 ---
@@ -154,8 +154,8 @@ if df is not None:
         # 備考や詳細情報
         with st.expander("詳細データ・備考"):
             st.write(f"**データソース:** {item['データソース']}")
-            if pd.notna(item["備　　考"]):
-                st.info(f"💡 備考: {item['備　　考']}")
+            if pd.notna(item["備考"]):
+                st.info(f"💡 備考: {item['備考']}")
     else:
         st.info("上の検索窓から食材を選んでください。")
 
