@@ -53,7 +53,7 @@ st.markdown("""
 
     <a href="/search" target="_self" class="link-container">
         <div class="button-design">
-            🔍 リンカ検索をはじめる
+            🔍 検索をはじめる
         </div>
     </a>
     """, unsafe_allow_html=True)
