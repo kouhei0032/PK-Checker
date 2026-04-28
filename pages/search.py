@@ -57,7 +57,7 @@ st.markdown("""
         display: block;
     }
     </style>
-    <span class="no-wrap-title">🔍 リンカ検索</span>
+    <span class="no-wrap-title">🔍 食品検索</span>
     """, unsafe_allow_html=True)
 
 st.write("食品名を検索するとリンとカリウムの含有量を表示します。")
@@ -112,6 +112,28 @@ if df is not None:
         # 4. 表示
         st.subheader(f"📊 {selected_name} ({weight}g) の推定値")
         col1, col2, col3 = st.columns(3)
+
+        st.markdown("<br>", unsafe_allow_html=True)
+
+        # --- アドバイス表示の修正版（優先順位順） ---
+        # 1. どちらか一方でも「赤（高い）」がある場合を最優先でチェック
+        if k_color == "#FF4B4B" or p_color == "#FF4B4B":
+            st.warning(
+                "⚠️ カリウムまたはリンが高めです。料理に利用する際は、分量を調整するか「茹でこぼし」などの調理法を工夫してください。")
+
+        # 2. 両方とも「青（低い）」場合（最高評価）
+        elif k_color == "#007BFF" and p_color == "#007BFF":
+            st.success("✅ リン・カリウム共に控えめで、料理に利用するのにオススメの食材です！")
+
+        # 3. 「赤」がなく、かつどちらか一方でも「青（低い）」がある場合
+        # （2番を通過しているので、ここでは「片方だけが青」の状態が判定されます）
+        elif k_color == "#007BFF" or p_color == "#007BFF":
+            st.success("✅ リン・カリウムの少なくとも一方が控えめです。料理に利用するのにオススメの食材です！")
+
+        # 4. それ以外（両方とも「黒（標準）」の場合）
+        else:
+            st.info("💡 標準的な含有量です。他の食材とのバランスを考えて活用しましょう。")
+
 
         with col1:
             # 表示するのは計算後の値(k_display)、色は基本値ベース(k_color)

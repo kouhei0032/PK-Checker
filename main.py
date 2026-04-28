@@ -13,7 +13,7 @@ home_page = st.Page(
 
 search_page = st.Page(
     "pages/search.py",
-    title="リンカ検索",
+    title="食品検索",
     icon="🔍"
 )
 
