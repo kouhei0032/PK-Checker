@@ -19,7 +19,20 @@ def load_data_from_gsheets(url):
 # データの読み込み
 df = load_data_from_gsheets(SHEET_URL)
 
-st.title("🔍 リンカ検索")
+st.markdown("""
+    <style>
+    .no-wrap-title {
+        white-space: nowrap;       /* 改行を禁止 */
+        font-size: 2.25rem;        /* タイトルの大きさ */
+        font-weight: 700;          /* 太字 */
+        padding: 1.25rem 0;        /* 上下の余白 */
+        line-height: 1.2;
+        display: block;
+    }
+    </style>
+    <span class="no-wrap-title">🔍 リンカ検索"</span>
+    """, unsafe_allow_html=True)
+
 st.write("食品名を検索するとリンとカリウムの含有量を表示します。")
 
 if df is not None:
