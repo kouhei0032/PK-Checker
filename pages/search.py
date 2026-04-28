@@ -111,7 +111,6 @@ if df is not None:
 
         # 4. 表示
         st.subheader(f"📊 {selected_name} ({weight}g) の推定値")
-        col1, col2, col3 = st.columns(3)
 
         st.markdown("<br>", unsafe_allow_html=True)
 
@@ -134,6 +133,11 @@ if df is not None:
         else:
             st.info("💡 標準的な含有量です。他の食材とのバランスを考えて活用しましょう。")
 
+        # --------------------------------------------
+
+        st.markdown("<br>", unsafe_allow_html=True)
+
+        col1, col2, col3 = st.columns(3)
 
         with col1:
             # 表示するのは計算後の値(k_display)、色は基本値ベース(k_color)
