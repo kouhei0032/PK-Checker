@@ -52,7 +52,7 @@ st.markdown("""
     }
     </style>
 
-    <a href="/foof_search" target="_self" class="link-container">
+    <a href="/food_search" target="_self" class="link-container">
         <div class="button-design">
             🔍 食品検索をはじめる
         </div>
