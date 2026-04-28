@@ -30,7 +30,7 @@ st.markdown("""
         display: block;
     }
     </style>
-    <span class="no-wrap-title">🔍 リンカ検索"</span>
+    <span class="no-wrap-title">🔍 リンカ検索</span>
     """, unsafe_allow_html=True)
 
 st.write("食品名を検索するとリンとカリウムの含有量を表示します。")
@@ -87,4 +87,4 @@ if df is not None:
     else:
         st.info("上の検索窓から食材を選んでください。")
 
-st.caption("Developed by Kohei Takahashi")
+st.caption("Developed by Kouhei Takahashi")
