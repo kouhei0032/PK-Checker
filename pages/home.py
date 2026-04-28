@@ -1,6 +1,17 @@
 import streamlit as st
 
-st.title("🥗 リンカチェッカー")
+st.markdown("""
+    <style>
+    .no-wrap {
+        white-space: nowrap;
+        font-size: 2.25rem; /* st.titleに近いサイズ */
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+    </style>
+    <div class="no-wrap">🥗 リンカチェッカー</div>
+    """, unsafe_content_safe=True)
+
 st.write("日々の献立管理における、リン(P)とカリウム(K)の計算をサポートします。")
 
 st.info("""
