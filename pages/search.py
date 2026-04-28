@@ -5,6 +5,33 @@ import pandas as pd
 # ご自身のスプレッドシートのURLをここに貼り付けてください
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1q5ACTKmnTL_2xkETX7rXajX7AG3d6I3n-DSj4QSx56Q/export?format=csv"
 
+# --- 関数 ---
+# 1. 状態に応じた色を判定する関数
+def get_status_color(value, low_threshold=None, high_threshold=None):
+    """
+    値に応じて色（CSSカラーコード）を返す
+    - low_threshold 以下なら青
+    - high_threshold 以上なら赤
+    - それ以外はデフォルト色
+    """
+    if low_threshold is not None and value <= low_threshold:
+        return "#007BFF"  # 青色
+    if high_threshold is not None and value >= high_threshold:
+        return "#FF4B4B"  # 赤色
+    return "#31333F"      # 標準の黒に近いグレー
+
+# 2. カスタム表示用関数
+def display_custom_metric(label, value, unit, color):
+    """HTMLを使用して色付きのメトリックを表示"""
+    st.markdown(
+        f"""
+        <div style="font-size: 14px; color: #61636A; margin-bottom: 4px;">{label}</div>
+        <div style="font-size: 24px; font-weight: 600; color: {color};">
+            {value} <span style="font-size: 16px;">{unit}</span>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 @st.cache_data(ttl=600)  # 10分間キャッシュを保持（頻繁な通信を避ける）
 def load_data_from_gsheets(url):
@@ -71,13 +98,24 @@ if df is not None:
         p_val = item["リン：P"] * weight / 100
         s_val = item["塩分"] * weight / 100
 
-        # 結果表示
         st.subheader(f"📊 {selected_name} ({weight}g) の推定値")
-
         col1, col2, col3 = st.columns(3)
-        col1.metric("カリウム", f"{k_val:.0f} mg")
-        col2.metric("リン", f"{p_val:.0f} mg")
-        col3.metric("塩分", f"{s_val:.1f} g")
+
+        # 各項目の判定（例: カリウムは2000以上なら赤、リンは50以下なら青/200以上なら赤）
+        k_color = get_status_color(k_val, low_threshold=50, high_threshold=200)
+        p_color = get_status_color(p_val, low_threshold=50, high_threshold=200)
+        s_color = get_status_color(s_val, low_threshold=50, high_threshold=200)
+
+        with col1:
+            display_custom_metric("カリウム", f"{k_val:.0f}", "mg", k_color)
+
+        with col2:
+            display_custom_metric("リン", f"{p_val:.0f}", "mg", p_color)
+
+        with col3:
+            display_custom_metric("塩分", f"{s_val:.1f}", "g", s_color)
+
+        st.markdown("<br>", unsafe_allow_html=True)
 
         # 備考や詳細情報
         with st.expander("詳細データ・備考"):
