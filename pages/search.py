@@ -67,18 +67,18 @@ if df is not None:
     food_options = df["食品表示名"].dropna().unique().tolist()
 
     # 1. まずは自由入力の検索窓（これでキーボードを強制的に出す）
-    search_term = st.text_input("🔍 キーワードで絞り込み", placeholder="例: 麦")
+    # search_term = st.text_input("🔍 キーワードで絞り込み", placeholder="例: 麦")
 
     # 2. 入力された文字でリストをフィルタリング
-    if search_term:
-        filtered_options = [opt for opt in food_options if search_term in opt]
-    else:
-        filtered_options = food_options
+    # if search_term:
+    #     filtered_options = [opt for opt in food_options if search_term in opt]
+    # else:
+    #     filtered_options = food_options
 
     # 3. 絞り込まれたリストから選択
     selected_name = st.selectbox(
         "食品名を選択",
-        filtered_options,
+        food_options,
         index=None,
         placeholder="候補から選んでください"
     )
