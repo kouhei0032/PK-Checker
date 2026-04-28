@@ -52,9 +52,9 @@ st.markdown("""
     }
     </style>
 
-    <a href="/search" target="_self" class="link-container">
+    <a href="/foof_search" target="_self" class="link-container">
         <div class="button-design">
-            🔍 検索をはじめる
+            🔍 食品検索をはじめる
         </div>
     </a>
     """, unsafe_allow_html=True)
