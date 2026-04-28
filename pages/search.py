@@ -92,28 +92,36 @@ if df is not None:
         # 重量の入力
         weight = st.number_input("食べる量 (g)", min_value=1, value=100, step=10)
 
-        # 計算（100gあたりの数値を換算）
-        # ※スプレッドシートのカラム名が「カリウム：K」である前提です
-        k_val = item["カリウム：K"] * weight / 100
-        p_val = item["リン：P"] * weight / 100
-        s_val = item["塩分"] * weight / 100
+        # 1. まず「100gあたりの基本値」を取得（判定用）
+        # 数値以外のデータ（Trなど）が含まれる可能性があるため float に変換
+        raw_k = pd.to_numeric(item["カリウム：K"], errors='coerce')
+        raw_p = pd.to_numeric(item["リン：P"], errors='coerce')
+        raw_s = pd.to_numeric(item["塩分"], errors='coerce')
 
+        # 2. 「実際に食べる量」に合わせて計算（表示用）
+        k_display = raw_k * weight / 100
+        p_display = raw_p * weight / 100
+        s_display = raw_s * weight / 100
+
+        # 3. 色の判定は「100gあたりの基本値（raw_...）」で行う！
+        # しきい値も100gあたりの基準に合わせます
+        k_color = get_status_color(raw_k, low_threshold=100, high_threshold=300)
+        p_color = get_status_color(raw_p, low_threshold=50, high_threshold=200)
+        s_color = get_status_color(raw_s, low_threshold=0.1, high_threshold=1.0)
+
+        # 4. 表示
         st.subheader(f"📊 {selected_name} ({weight}g) の推定値")
         col1, col2, col3 = st.columns(3)
 
-        # 各項目の判定（例: カリウムは2000以上なら赤、リンは50以下なら青/200以上なら赤）
-        k_color = get_status_color(k_val, low_threshold=100, high_threshold=300)
-        p_color = get_status_color(p_val, low_threshold=50, high_threshold=200)
-        s_color = get_status_color(s_val, low_threshold=0.1, high_threshold=2)
-
         with col1:
-            display_custom_metric("カリウム", f"{k_val:.0f}", "mg", k_color)
+            # 表示するのは計算後の値(k_display)、色は基本値ベース(k_color)
+            display_custom_metric("カリウム", f"{k_display:.0f}", "mg", k_color)
 
         with col2:
-            display_custom_metric("リン", f"{p_val:.0f}", "mg", p_color)
+            display_custom_metric("リン", f"{p_display:.0f}", "mg", p_color)
 
         with col3:
-            display_custom_metric("塩分", f"{s_val:.1f}", "g", s_color)
+            display_custom_metric("塩分", f"{s_display:.1f}", "g", s_color)
 
         st.markdown("<br>", unsafe_allow_html=True)
 
