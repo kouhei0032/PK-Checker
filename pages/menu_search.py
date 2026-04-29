@@ -99,7 +99,7 @@ if df is not None:
         # しきい値も100gあたりの基準に合わせます
         k_color = get_status_color(raw_k, low_threshold=100, high_threshold=700)
         p_color = get_status_color(raw_p, low_threshold=50, high_threshold=350)
-        s_color = get_status_color(raw_s, low_threshold=0.1, high_threshold=2.6)
+        s_color = get_status_color(raw_s, low_threshold=0.1, high_threshold=2.1)
 
         # 4. 表示
         st.subheader(f"📊 {selected_name}")
@@ -133,10 +133,10 @@ if df is not None:
 
         with col1:
             # 表示するのは計算後の値(k_display)、色は基本値ベース(k_color)
-            display_custom_metric("カリウム", f"{raw_k:.0f}", "mg", k_color)
+            display_custom_metric("リン", f"{raw_p:.0f}", "mg", p_color)
 
         with col2:
-            display_custom_metric("リン", f"{raw_p:.0f}", "mg", p_color)
+            display_custom_metric("カリウム", f"{raw_k:.0f}", "mg", k_color)
 
         with col3:
             display_custom_metric("塩分", f"{raw_s:.1f}", "g", s_color)
@@ -144,10 +144,11 @@ if df is not None:
         st.markdown("<br>", unsafe_allow_html=True)
 
         # 備考や詳細情報
-        with st.expander("詳細データ・備考"):
+        with st.expander("詳細データ・備考", expanded=True):
             st.write(f"**データソース:** {item['データソース']}")
             if pd.notna(item["備考"]):
-                st.info(f"💡 備考: {item['備考']}")
+                st.markdown(f"**備考:** {item['備考']}")
+            st.write(f"**1食分の数値目安:** リン=350mg カリウム=700mg 塩分=2g")
     else:
         st.info("上の検索窓から食材を選んでください。")
 

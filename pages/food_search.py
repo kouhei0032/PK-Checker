@@ -141,10 +141,10 @@ if df is not None:
 
         with col1:
             # 表示するのは計算後の値(k_display)、色は基本値ベース(k_color)
-            display_custom_metric("カリウム", f"{k_display:.0f}", "mg", k_color)
+            display_custom_metric("リン", f"{p_display:.0f}", "mg", p_color)
 
         with col2:
-            display_custom_metric("リン", f"{p_display:.0f}", "mg", p_color)
+            display_custom_metric("カリウム", f"{k_display:.0f}", "mg", k_color)
 
         with col3:
             display_custom_metric("塩分", f"{s_display:.1f}", "g", s_color)
