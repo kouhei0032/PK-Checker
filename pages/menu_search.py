@@ -3,7 +3,7 @@ import pandas as pd
 
 # --- 設定 ---
 # スプレッドシートのURL
-SHEET_URL = "https://docs.google.com/spreadsheets/d/1q5ACTKmnTL_2xkETX7rXajX7AG3d6I3n-DSj4QSx56Q/export?format=csv&gid=2004543880"
+SHEET_URL = st.secrets["gsheet_url"]
 
 # --- 関数 ---
 # 1. 状態に応じた色を判定する関数
