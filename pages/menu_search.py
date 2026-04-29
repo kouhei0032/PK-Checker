@@ -100,7 +100,7 @@ if df is not None:
         p_color = get_status_color(raw_p, low_threshold=50, high_threshold=350)
         k_color = get_status_color(raw_k, low_threshold=100, high_threshold=700)
         s_color = get_status_color(raw_s, low_threshold=0.1, high_threshold=2.1)
-        r_color = get_status_color(raw_s, low_threshold=0, high_threshold=0)
+        r_color = "#31333F"
 
         # 4. 表示
         st.subheader(f"📊 {selected_name}")
