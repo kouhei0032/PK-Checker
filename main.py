@@ -18,9 +18,9 @@ food_search_page = st.Page(
 )
 
 manu_search_page = st.Page(
-    "pages/manu_search.py",
-    title="料理検索",
-    icon="🔍"
+    "pages/menu_search.py",
+    title="外食検索",
+    icon="🍴"
 )
 
 # ブラウザに「これは日本語のページです」と明示的に伝える

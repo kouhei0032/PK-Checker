@@ -57,10 +57,10 @@ st.markdown("""
         display: block;
     }
     </style>
-    <span class="no-wrap-title">🔍 料理検索</span>
+    <span class="no-wrap-title">🍴 外食検索</span>
     """, unsafe_allow_html=True)
 
-st.write("料理名を検索するとリンとカリウムの含有量を表示します。")
+st.write("料理名を検索すると一般的なリンとカリウムの含有量を表示します。")
 
 if df is not None:
     # 検索機能：食品表示名のリストを作成
