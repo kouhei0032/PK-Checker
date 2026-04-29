@@ -17,10 +17,10 @@ st.markdown("""
 st.write("本アプリは透析導入となった方の日々の食事管理における、リン(P)とカリウム(K)の情報検索をサポートするWebアプリです。"
          "食事をするとき時に気軽にリンとカリウムを検索できるアプリを目指しています。")
 
-# --- 追加：スマホ横幅いっぱいの検索ボタン風リンク ---
+# --- スマホ横幅いっぱいの検索ボタン風リンク ---
 st.markdown("""
     <style>
-    /* リンク全体の設定（下線を消す） */
+    /* 共通設定：リンクとボタンの基本デザイン */
     .link-container {
         text-decoration: none !important;
         display: block;
@@ -28,9 +28,7 @@ st.markdown("""
         margin-top: 10px;
     }
 
-    /* 実際のボタンの見た目（中身のdivに設定） */
     .button-design {
-        background-color: #007bff;
         color: white !important;
         text-align: center;
         padding: 15px 0;
@@ -38,23 +36,40 @@ st.markdown("""
         font-weight: bold;
         font-size: 1.1rem;
         transition: 0.3s;
-        /* ここでも下線が出ないよう念押し */
         text-decoration: none !important;
     }
 
-    .button-design:hover {
+    /* 食品検索用の色（青） */
+    .btn-food {
+        background-color: #007bff;
+    }
+    .btn-food:hover {
         background-color: #0056b3;
     }
 
-    /* Streamlitが強制的に引く下線を完全に消去 */
+    /* 外食検索用の色（オレンジ） */
+    .btn-out {
+        background-color: #ffa500;
+    }
+    .btn-out:hover {
+        background-color: #e86c00;
+    }
+
+    /* 下線消去の徹底 */
     .link-container * {
         text-decoration: none !important;
     }
     </style>
 
     <a href="/food_search" target="_self" class="link-container">
-        <div class="button-design">
+        <div class="button-design btn-food">
             🔍 食品検索をはじめる
+        </div>
+    </a>
+
+    <a href="/menu_search" target="_self" class="link-container">
+        <div class="button-design btn-out">
+            🍴 外食検索をはじめる
         </div>
     </a>
     """, unsafe_allow_html=True)
