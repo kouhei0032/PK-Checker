@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="PK-Checker", page_icon="🥗")
+st.set_page_config(page_title="リンカリ", page_icon="🥗")
 
 # 1. ページの定義
 # ホーム画面用の中身は pages/home.py に移動させます
