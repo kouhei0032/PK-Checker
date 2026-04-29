@@ -11,7 +11,7 @@ st.markdown("""
         display: block;
     }
     </style>
-    <span class="no-wrap-title">🥗 リンカチェッカー</span>
+    <span class="no-wrap-title">🥗 リンカリナビ</span>
     """, unsafe_allow_html=True)
 
 st.write("本アプリは透析導入となった方の日々の食事管理における、リン(P)とカリウム(K)の情報検索をサポートするWebアプリです。"
