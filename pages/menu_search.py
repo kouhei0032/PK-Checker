@@ -97,9 +97,10 @@ if df is not None:
 
         # 3. 色の判定は「100gあたりの基本値（raw_...）」で行う！
         # しきい値も100gあたりの基準に合わせます
-        k_color = get_status_color(raw_k, low_threshold=100, high_threshold=700)
         p_color = get_status_color(raw_p, low_threshold=50, high_threshold=350)
+        k_color = get_status_color(raw_k, low_threshold=100, high_threshold=700)
         s_color = get_status_color(raw_s, low_threshold=0.1, high_threshold=2.1)
+        r_color = get_status_color(raw_s, low_threshold=0, high_threshold=0)
 
         # 4. 表示
         st.subheader(f"📊 {selected_name}")
@@ -129,16 +130,19 @@ if df is not None:
 
         st.markdown("<br>", unsafe_allow_html=True)
 
-        col1, col2, col3 = st.columns(3)
+        col1, col2, col3, col4 = st.columns(4)
 
         with col1:
             # 表示するのは計算後の値(k_display)、色は基本値ベース(k_color)
             display_custom_metric("リン", f"{raw_p:.0f}", "mg", p_color)
 
         with col2:
-            display_custom_metric("カリウム", f"{raw_k:.0f}", "mg", k_color)
+            display_custom_metric("リンの吸収率", f"{item["リンの吸収率"]}", "g", r_color)
 
         with col3:
+            display_custom_metric("カリウム", f"{raw_k:.0f}", "mg", k_color)
+
+        with col4:
             display_custom_metric("塩分", f"{raw_s:.1f}", "g", s_color)
 
         st.markdown("<br>", unsafe_allow_html=True)
