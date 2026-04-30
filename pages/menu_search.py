@@ -161,6 +161,7 @@ if df is not None:
             if pd.notna(item["備考"]):
                 st.markdown(f"**備考:** {item['備考']}")
             st.write(f"**1食分の数値目安:** リン=350mg カリウム=700mg 塩分=2g")
+            st.write(f"**調味料::** 計算には含んでいますが、食材に記載していません。")
     else:
         st.info("上の検索窓から食材を選んでください。")
 

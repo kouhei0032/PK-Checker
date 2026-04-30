@@ -66,7 +66,7 @@ with col2:
 
 #ボタン追加する場合はこんな感じ
 # col3, col4 = st.columns(2)
-# 
+#
 # with col3:
 #     # クラスを button-design と btn-food の両方指定
 #     st.markdown('<a href="/food_search" target="_self" class="button-design btn-food">🔍 @食品検索</a>', unsafe_allow_html=True)
