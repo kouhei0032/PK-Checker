@@ -33,6 +33,12 @@ def display_custom_metric(label, value, unit, color):
         unsafe_allow_html=True
     )
 
+# 3. リンの吸収率のスタイルを定義する関数
+def color_phosphorus_absorption(val):
+    if val == "高":
+        return 'background-color: #ffcccc; color: #ff0000; font-weight: bold;' # 背景薄赤、文字赤
+    return ''
+
 @st.cache_data(ttl=600)  # 10分間キャッシュを保持（頻繁な通信を避ける）
 def load_data_from_gsheets(url):
     try:
@@ -137,7 +143,9 @@ if df is not None:
             display_custom_metric("リン", f"{raw_p:.0f}", "mg", p_color)
 
         with col2:
-            display_custom_metric("リンの吸収率", f"{item["リンの吸収率"]}", "g", r_color)
+            #display_custom_metric("リンの吸収率", f"{item["リンの吸収率"]}", "g", r_color)
+            target_color = "red" if item["リンの吸収率"] == "高" else r_color
+            display_custom_metric("リンの吸収率", f"{item['リンの吸収率']}", "", target_color)
 
         with col3:
             display_custom_metric("カリウム", f"{raw_k:.0f}", "mg", k_color)
