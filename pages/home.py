@@ -51,14 +51,21 @@ st.markdown("""
         background-color: #e86c00;
     }
     
-    /* データについての色（グレー） */
-    .btn-other {
-        background-color: #a9a9a9;  /* 落ち着いたグレー */
+    /* データについての色（明るい緑） */
+    .btn-data {
+        background-color: #28a745;  /* 鮮やかな緑 */
     }
-    .btn-other:hover {
-        background-color: #5a6268;  /* ホバー時に少し暗く */
+    .btn-data:hover {
+        background-color: #218838;  /* ホバー時に少し暗く */
     }
     
+    /* 私についての色（グレー） */
+    .btn-dev {
+        background-color: #ff6b6b;  /* 温かみのある赤 */
+    }
+    .btn-dev:hover {
+        background-color: #fa5252;  /* ホバー時に少し暗く */
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -79,11 +86,11 @@ col3, col4 = st.columns(2)
 
 with col3:
     # クラスを button-design と btn-food の両方指定
-    st.markdown('<a href="/food_search" target="_self" class="button-design btn-other">📘 データについて</a>', unsafe_allow_html=True)
+    st.markdown('<a href="/food_search" target="_self" class="button-design btn-data">📘 データについて</a>', unsafe_allow_html=True)
 
 with col4:
     # クラスを button-design と btn-out の両方指定
-    st.markdown('<a href="/menu_search" target="_self" class="button-design btn-other">👨‍💻 私について</a>', unsafe_allow_html=True)
+    st.markdown('<a href="/menu_search" target="_self" class="button-design btn-dev">👨‍💻 開発者について</a>', unsafe_allow_html=True)
 
 
 st.markdown("<br>", unsafe_allow_html=True)
