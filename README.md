@@ -10,7 +10,7 @@
 ## アプリリンク（App Link）
 このアプリは以下のURLから利用できます。
 
-[![Open in Streamlit](https://img.shields.io/badge/Open%20in%20Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://pk-checker.streamlit.app/)
+[![Open in Streamlit](https://img.shields.io/badge/Open%20in%20Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://pk-navi.streamlit.app//)
 
 ## 背景 (Background)
 
