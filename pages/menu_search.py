@@ -210,4 +210,4 @@ st.markdown("""
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-st.caption("Developed by Kouhei Takahashi　|　透析患者さんの食事管理応援プロジェクト")
+st.caption("Developed by Kouhei Takahashi | 透析患者さんの食事管理応援プロジェクト")

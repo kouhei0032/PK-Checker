@@ -115,4 +115,4 @@ st.warning("""
 個々の病状や健康状態により必要な制限は異なります。必ず主治医や管理栄養士の指導に従ってください。
 """)
 
-st.caption("Developed by Kouhei Takahashi　|　透析患者さんの食事管理応援プロジェクト")
+st.caption("Developed by Kouhei Takahashi | 透析患者さんの食事管理応援プロジェクト")
