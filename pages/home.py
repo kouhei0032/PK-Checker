@@ -50,6 +50,15 @@ st.markdown("""
     .btn-out:hover {
         background-color: #e86c00;
     }
+    
+    /* データについての色（グレー） */
+    .btn-other {
+        background-color: #a9a9a9;  /* 落ち着いたグレー */
+    }
+    .btn-other:hover {
+        background-color: #5a6268;  /* ホバー時に少し暗く */
+    }
+    
     </style>
     """, unsafe_allow_html=True)
 
@@ -64,16 +73,17 @@ with col2:
     # クラスを button-design と btn-out の両方指定
     st.markdown('<a href="/menu_search" target="_self" class="button-design btn-out">🍴 外食検索</a>', unsafe_allow_html=True)
 
-#ボタン追加する場合はこんな感じ
-# col3, col4 = st.columns(2)
-#
-# with col3:
-#     # クラスを button-design と btn-food の両方指定
-#     st.markdown('<a href="/food_search" target="_self" class="button-design btn-food">🔍 @食品検索</a>', unsafe_allow_html=True)
-#
-# with col4:
-#     # クラスを button-design と btn-out の両方指定
-#     st.markdown('<a href="/menu_search" target="_self" class="button-design btn-out">🍴 @外食検索</a>', unsafe_allow_html=True)
+
+#2列目
+col3, col4 = st.columns(2)
+
+with col3:
+    # クラスを button-design と btn-food の両方指定
+    st.markdown('<a href="/food_search" target="_self" class="button-design btn-other">📘 データについて</a>', unsafe_allow_html=True)
+
+with col4:
+    # クラスを button-design と btn-out の両方指定
+    st.markdown('<a href="/menu_search" target="_self" class="button-design btn-other">👨‍💻 私について</a>', unsafe_allow_html=True)
 
 
 st.markdown("<br>", unsafe_allow_html=True)
@@ -86,7 +96,7 @@ st.info("""
 """)
 
 st.info("""
-### 🎨 色の目安について：100gあたりの含有量に基づいて色分けしています
+### 🎨 色の目安について：リンとカリウムの含有量に基づいて色分けしています
 - **青色**: リン・カリウムが控えめな食材（安心してお召し上がりいただけます）
 - **黒色**: リン・カリウムが一般的な食材（通常の量であれば問題ありません）
 - **赤色**: リン・カリウムが多めな食材（食べる量や調理法に注意しましょう）
