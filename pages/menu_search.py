@@ -157,7 +157,7 @@ if df is not None:
 
         if pd.notna(item["備考"]):
             st.markdown(f"**備考:** {item['備考']}")
-            
+
         st.markdown("<br>", unsafe_allow_html=True)
 
         # 備考や詳細情報

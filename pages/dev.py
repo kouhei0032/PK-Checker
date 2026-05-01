@@ -11,10 +11,10 @@ st.markdown("""
         display: block;
     }
     </style>
-    <span class="no-wrap-title">📘 公式ガイド</span>
+    <span class="no-wrap-title">‍👨‍💻 開発者について</span>
     """, unsafe_allow_html=True)
 
-st.subheader("1. アプリに記載されているデータ")
+st.subheader("1. アプリ開発の想い")
 st.write("""
 本アプリのデータは、文部科学省：日本食品標準成分表（八訂）を利用しています。食品検索データはこちらのデータを
 そのまま掲載しています。外食検索では、日本食品標準成分表（八訂）を元に一般的なレシピを用いて、AIが推計した
