@@ -101,8 +101,7 @@ if df is not None:
         raw_p = pd.to_numeric(item["リン：P"], errors='coerce')
         raw_s = pd.to_numeric(item["塩分"], errors='coerce')
 
-        # 3. 色の判定は「100gあたりの基本値（raw_...）」で行う！
-        # しきい値も100gあたりの基準に合わせます
+        # 3. 色の判定は 1食あたり で行う！
         p_color = get_status_color(raw_p, low_threshold=50, high_threshold=350)
         k_color = get_status_color(raw_k, low_threshold=100, high_threshold=700)
         s_color = get_status_color(raw_s, low_threshold=0.1, high_threshold=2.1)
