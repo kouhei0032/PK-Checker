@@ -17,7 +17,7 @@ food_search_page = st.Page(
     icon="🔍"
 )
 
-manu_search_page = st.Page(
+menu_search_page = st.Page(
     "pages/menu_search.py",
     title="外食検索",
     icon="🍴"
@@ -27,7 +27,7 @@ manu_search_page = st.Page(
 st.markdown('<html lang="ja"></html>', unsafe_allow_html=True)
 
 # 2. ナビゲーションの設定
-pg = st.navigation([home_page, food_search_page, manu_search_page])
+pg = st.navigation([home_page, food_search_page, menu_search_page])
 
 # 4. 実行
 pg.run()
