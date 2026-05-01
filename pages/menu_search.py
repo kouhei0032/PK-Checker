@@ -155,11 +155,14 @@ if df is not None:
 
         st.markdown("<br>", unsafe_allow_html=True)
 
+        if pd.notna(item["備考"]):
+            st.markdown(f"**備考:** {item['備考']}")
+            
+        st.markdown("<br>", unsafe_allow_html=True)
+
         # 備考や詳細情報
         with st.expander("詳細データ・備考", expanded=True):
             st.write(f"**データソース:** {item['データソース']}")
-            if pd.notna(item["備考"]):
-                st.markdown(f"**備考:** {item['備考']}")
             st.write(f"**1食分の数値目安:** リン=350mg カリウム=700mg 塩分=2g")
             st.write(f"**調味料:** 調味料は計算には含んでいますが、食材に記載していません。")
     else:

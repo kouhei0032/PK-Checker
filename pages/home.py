@@ -72,24 +72,21 @@ st.markdown("""
 # Streamlitの機能で2列に分割
 col1, col2 = st.columns(2)
 
+#1行目
 with col1:
     # クラスを button-design と btn-food の両方指定
     st.markdown('<a href="/food_search" target="_self" class="button-design btn-food">🔍 食品検索</a>', unsafe_allow_html=True)
 
 with col2:
-    # クラスを button-design と btn-out の両方指定
     st.markdown('<a href="/menu_search" target="_self" class="button-design btn-out">🍴 外食検索</a>', unsafe_allow_html=True)
 
-
-#2列目
+#2行目
 col3, col4 = st.columns(2)
 
 with col3:
-    # クラスを button-design と btn-food の両方指定
-    st.markdown('<a href="/food_search" target="_self" class="button-design btn-data">📘 データについて</a>', unsafe_allow_html=True)
+    st.markdown('<a href="/guide" target="_self" class="button-design btn-data">📘 公式ガイド</a>', unsafe_allow_html=True)
 
 with col4:
-    # クラスを button-design と btn-out の両方指定
     st.markdown('<a href="/menu_search" target="_self" class="button-design btn-dev">👨‍💻 開発者について</a>', unsafe_allow_html=True)
 
 

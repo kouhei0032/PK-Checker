@@ -23,11 +23,17 @@ menu_search_page = st.Page(
     icon="🍴"
 )
 
+guide_page = st.Page(
+    "pages/guide.py",
+    title="公式ガイド",
+    icon="📘"
+)
+
 # ブラウザに「これは日本語のページです」と明示的に伝える
 st.markdown('<html lang="ja"></html>', unsafe_allow_html=True)
 
 # 2. ナビゲーションの設定
-pg = st.navigation([home_page, food_search_page, menu_search_page])
+pg = st.navigation([home_page, food_search_page, menu_search_page, guide_page])
 
 # 4. 実行
 pg.run()
