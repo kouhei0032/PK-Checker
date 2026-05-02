@@ -26,6 +26,43 @@ st.write("""
 本アプリは、どなたでも無料でご利用いただけます。皆様の健やかな食事管理の一助となれば幸いです。
 """)
 
+st.subheader("2. OFUSEで応援を送る")
+st.write("本プロジェクトは非営利で運営しており、頂いたご支援は開発維持費や、"
+         "より便利な機能を追加するための活動費として大切に活用させていただきます。"
+         "同じ悩みを持つ方々の力になれるよう開発を続けてまいりますので、温かい応援をいただけますと幸いです。")
+# OFUSEボタンの自作
+ofuse_url = "https://ofuse.me/o?uid=174869"
+
+st.markdown(f"""
+    <style>
+    .ofuse-button {{
+        display: inline-block;
+        background-color: #FF4B4B; /* OFUSEに近い赤色 */
+        color: white !important;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none !important;
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }}
+    .ofuse-button:hover {{
+        background-color: #D63D3D;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transform: translateY(-1px);
+    }}
+    </style>
+
+    <a href="{ofuse_url}" target="_blank" class="ofuse-button">
+        OFUSEで応援を送る
+    </a>
+    <p style="font-size: 12px; color: #666; margin-top: 10px;">
+        ※外部サイト（OFUSE）へ移動します。
+    </p>
+""", unsafe_allow_html=True)
+
 # --- スマホ横幅いっぱいの戻るボタン風リンク ---
 st.markdown("""
     <style>
