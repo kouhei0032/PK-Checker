@@ -105,9 +105,9 @@ if df is not None:
 
         # 3. 色の判定は「100gあたりの基本値（raw_...）」で行う！
         # しきい値も100gあたりの基準に合わせます
-        k_color = get_status_color(raw_k, low_threshold=151, high_threshold=300)
-        p_color = get_status_color(raw_p, low_threshold=101, high_threshold=150)
-        s_color = get_status_color(raw_s, low_threshold=0.1, high_threshold=1.0)
+        k_color = get_status_color(raw_k, low_threshold=150, high_threshold=301)
+        p_color = get_status_color(raw_p, low_threshold=100, high_threshold=151)
+        s_color = get_status_color(raw_s, low_threshold=0.1, high_threshold=1.1)
 
         # 4. 表示
         st.subheader(f"📊 {selected_name} ({weight}g) の推定値")
