@@ -87,7 +87,7 @@ with col3:
     st.markdown('<a href="/guide" target="_self" class="button-design btn-data">📘 公式ガイド</a>', unsafe_allow_html=True)
 
 with col4:
-    st.markdown('<a href="/dev" target="_self" class="button-design btn-dev">👨‍💻 開発者について</a>', unsafe_allow_html=True)
+    st.markdown('<a href="/dev" target="_self" class="button-design btn-dev">👨‍💻 開発について</a>', unsafe_allow_html=True)
 
 
 st.markdown("<br>", unsafe_allow_html=True)

@@ -7,7 +7,7 @@ st.set_page_config(page_title="リンカリナビ", page_icon="🥗")
 home_page = st.Page(
     "pages/home.py",
     title="ホーム",
-    icon="🏠",
+    icon="🥗",
     default=True
 )
 
@@ -31,7 +31,7 @@ guide_page = st.Page(
 
 dev_page = st.Page(
     "pages/dev.py",
-    title="開発者について",
+    title="開発について",
     icon="👨‍💻"
 )
 

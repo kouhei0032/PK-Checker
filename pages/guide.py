@@ -55,4 +55,48 @@ st.write("""
 - 高: 加工食品の添加物（リン酸塩）、魚卵、乳製品、練物：添加物（無機リン）はほぼ100%吸収されます
 """)
 
+# --- スマホ横幅いっぱいの戻るボタン風リンク ---
+st.markdown("""
+    <style>
+    /* リンク全体の設定（下線を消す） */
+    .link-container {
+        text-decoration: none !important;
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* 実際のボタンの見た目（中身のdivに設定） */
+    .button-design {
+        background-color: #007bff;
+        color: white !important;
+        text-align: center;
+        padding: 15px 0;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: 0.3s;
+        /* ここでも下線が出ないよう念押し */
+        text-decoration: none !important;
+    }
+
+    .button-design:hover {
+        background-color: #0056b3;
+    }
+
+    /* Streamlitが強制的に引く下線を完全に消去 */
+    .link-container * {
+        text-decoration: none !important;
+    }
+    </style>
+
+    <a href="/" target="_self" class="link-container">
+        <div class="button-design">
+            🥗 もどる
+        </div>
+    </a>
+    """, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+
 st.caption("Developed by Kouhei Takahashi | 透析患者さんの食事管理応援プロジェクト")
