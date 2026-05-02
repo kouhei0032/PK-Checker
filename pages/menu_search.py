@@ -162,7 +162,7 @@ if df is not None:
         # 備考や詳細情報
         with st.expander("詳細データ・備考", expanded=True):
             st.write(f"**データソース:** {item['データソース']}")
-            st.write(f"**1食分の数値目安:** リン=350mg カリウム=700mg 塩分=2g")
+            st.write(f"**1食分の数値目安:** リン=350mg カリウム=600mg 塩分=2g")
             st.write(f"**調味料:** 調味料は計算には含んでいますが、食材に記載していません。")
     else:
         st.info("上の検索窓から食材を選んでください。")
