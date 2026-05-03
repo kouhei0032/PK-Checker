@@ -152,7 +152,7 @@ if df is not None:
         st.markdown("<br>", unsafe_allow_html=True)
 
         # 備考や詳細情報
-        with st.expander("詳細データ・備考"):
+        with st.expander("詳細データ・備考", expanded=True):
             st.write(f"**データソース:** {item['データソース']}")
             st.write(f"**食品詳細名:** {item['食品詳細名']}")
             if pd.notna(item["備考"]):
