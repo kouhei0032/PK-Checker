@@ -154,6 +154,7 @@ if df is not None:
         # 備考や詳細情報
         with st.expander("詳細データ・備考"):
             st.write(f"**データソース:** {item['データソース']}")
+            st.write(f"**食品詳細名:** {item['食品詳細名']}")
             if pd.notna(item["備考"]):
                 st.info(f"💡 備考: {item['備考']}")
     else:
@@ -204,4 +205,4 @@ st.markdown("""
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-st.caption("Developed by Kouhei Takahashi | 透析患者さんの食事管理応援プロジェクト")
+st.caption("Developed by Kouhei Takahashi | 透析患者さんのQOL応援プロジェクト")
