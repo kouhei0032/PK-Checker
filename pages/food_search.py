@@ -141,10 +141,10 @@ if df is not None:
 
         with col1:
             # 表示するのは計算後の値(k_display)、色は基本値ベース(k_color)
-            display_custom_metric("リン", f"{p_display:.0f}", "mg", p_color)
+            display_custom_metric("リン", f"{p_display:.0f}/150", "mg", p_color)
 
         with col2:
-            display_custom_metric("カリウム", f"{k_display:.0f}", "mg", k_color)
+            display_custom_metric("カリウム", f"{k_display:.0f}/300", "mg", k_color)
 
         with col3:
             display_custom_metric("塩分", f"{s_display:.1f}", "g", s_color)
@@ -155,6 +155,7 @@ if df is not None:
         with st.expander("詳細データ・備考", expanded=True):
             st.write(f"**データソース:** {item['データソース']}")
             st.write(f"**食品詳細名:** {item['食品詳細名']}")
+            st.write(f"**警戒ラインの目安:** リン=150mg カリウム=300mg")
             if pd.notna(item["備考"]):
                 st.info(f"💡 備考: {item['備考']}")
     else:
