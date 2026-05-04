@@ -1,18 +1,60 @@
 import streamlit as st
+import base64
+from pathlib import Path
 
-st.markdown("""
-    <style>
-    .no-wrap-title {
-        white-space: nowrap;       /* 改行を禁止 */
-        font-size: 2.25rem;        /* タイトルの大きさ */
-        font-weight: 700;          /* 太字 */
-        padding: 1.25rem 0;        /* 上下の余白 */
-        line-height: 1.2;
-        display: block;
-    }
-    </style>
-    <span class="no-wrap-title">🥗 リンカリナビ</span>
-    """, unsafe_allow_html=True)
+# st.markdown("""
+#     <style>
+#     .no-wrap-title {
+#         white-space: nowrap;       /* 改行を禁止 */
+#         font-size: 2.25rem;        /* タイトルの大きさ */
+#         font-weight: 700;          /* 太字 */
+#         padding: 1.25rem 0;        /* 上下の余白 */
+#         line-height: 1.2;
+#         display: block;
+#     }
+#     </style>
+#     <span class="no-wrap-title">🥗 リンカリナビ</span>
+#     """, unsafe_allow_html=True)
+
+# 画像をBase64に変換する関数
+def get_image_base64(path):
+    with open(path, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+
+# ロゴ画像のパス（staticフォルダの中にある場合）
+# home.pyの場所を基準に、一つ上の階層の static/logo.png を指す
+current_dir = Path(__file__).parent  # pages フォルダ
+root_dir = current_dir.parent         # プロジェクトのルート
+logo_path = root_dir / "static" / "logo.png"
+
+if logo_path.exists():
+    img_base64 = get_image_base64(logo_path)
+
+    st.markdown(f"""
+        <style>
+        .no-wrap-title {{
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-size: 2.25rem;
+            font-weight: 700;
+            padding: 1.25rem 0;
+            line-height: 1.2;
+        }}
+        .title-logo-img {{
+            height: 1.5em; /* 文字の大きさに合わせる */
+            margin-right: 15px;
+        }}
+        </style>
+        <div class="no-wrap-title">
+            <img src="data:image/png;base64,{img_base64}" class="title-logo-img">
+            リンカリナビ
+        </div>
+        """, unsafe_allow_html=True)
+else:
+    st.error("ロゴ画像が見つかりません。パスを確認してください。")
 
 st.write("透析導入となった方の日々の食事管理における、リン(P)とカリウム(K)の情報検索をサポートするWebアプリです。"
          "食事をするとき時に気軽にリンとカリウムを検索できるアプリを目指しています。無料でご利用いただけます")
