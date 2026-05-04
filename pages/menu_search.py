@@ -139,7 +139,7 @@ if df is not None:
 
         with col1:
             # 表示するのは計算後の値(k_display)、色は基本値ベース(k_color)
-            display_custom_metric("リン", f"{raw_p:.0f}", "mg", p_color)
+            display_custom_metric("リン", f"{raw_p:.0f}/350", "mg", p_color)
 
         with col2:
             #display_custom_metric("リンの吸収率", f"{item["リンの吸収率"]}", "g", r_color)
@@ -147,10 +147,10 @@ if df is not None:
             display_custom_metric("リンの吸収率", f"{item['リンの吸収率']}", "", target_color)
 
         with col3:
-            display_custom_metric("カリウム", f"{raw_k:.0f}", "mg", k_color)
+            display_custom_metric("カリウム", f"{raw_k:.0f}/600", "mg", k_color)
 
         with col4:
-            display_custom_metric("塩分", f"{raw_s:.1f}", "g", s_color)
+            display_custom_metric("塩分", f"{raw_s:.1f}/2.0", "g", s_color)
 
         st.markdown("<br>", unsafe_allow_html=True)
 
